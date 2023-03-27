@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "21907215705",
+    "project_id": "honeybee-learning-station",
+    "storage_bucket": "honeybee-learning-station.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21907215705:android:763115cb53c0dd63632848",
+        "android_client_info": {
+          "package_name": "com.example.honey_bee_learning_station"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21907215705-b53csqn9a668bpg001j9h2tiv8c3hsap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIFacIgIzhgmBU8DsJ2yu4TQX7D7EGOkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21907215705-5ge4im1kaut02qged59hkl4teqvdj00i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "21907215705-qft3dup2f428ts8fisgfh7f5tvtmqu1v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.honeyBeeLearningStation"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
