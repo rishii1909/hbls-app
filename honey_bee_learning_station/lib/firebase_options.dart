@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,6 +43,16 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBwqoyhDUA6XpMnVXzsb7cE33wFP3uaaA8',
+    appId: '1:21907215705:web:290d23c82efd5080632848',
+    messagingSenderId: '21907215705',
+    projectId: 'honeybee-learning-station',
+    authDomain: 'honeybee-learning-station.firebaseapp.com',
+    storageBucket: 'honeybee-learning-station.appspot.com',
+    measurementId: 'G-XNN7WZ0B8J',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBIFacIgIzhgmBU8DsJ2yu4TQX7D7EGOkE',
     appId: '1:21907215705:android:763115cb53c0dd63632848',
@@ -63,7 +67,19 @@ class DefaultFirebaseOptions {
     messagingSenderId: '21907215705',
     projectId: 'honeybee-learning-station',
     storageBucket: 'honeybee-learning-station.appspot.com',
-    iosClientId: '21907215705-qft3dup2f428ts8fisgfh7f5tvtmqu1v.apps.googleusercontent.com',
+    iosClientId:
+        '21907215705-qft3dup2f428ts8fisgfh7f5tvtmqu1v.apps.googleusercontent.com',
+    iosBundleId: 'com.example.honeyBeeLearningStation',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyAXKpcD6cxArpAXy3z6U12pGuutvmMvchw',
+    appId: '1:21907215705:ios:18b9be9ce74c8612632848',
+    messagingSenderId: '21907215705',
+    projectId: 'honeybee-learning-station',
+    storageBucket: 'honeybee-learning-station.appspot.com',
+    iosClientId:
+        '21907215705-qft3dup2f428ts8fisgfh7f5tvtmqu1v.apps.googleusercontent.com',
     iosBundleId: 'com.example.honeyBeeLearningStation',
   );
 }
