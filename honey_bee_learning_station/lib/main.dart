@@ -23,8 +23,8 @@ void main() async {
     try {
       FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
       await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+      print('firebase emulator Connected Successfully');
     } catch (e) {
-      // ignore: avoid_print
       print(e);
     }
   }
@@ -68,14 +68,15 @@ class _MyHomePageState extends State<MyHomePage> {
   // unComment this to implement the persistant login
   void initState() {
     super.initState();
-    user = FirebaseAuth.instance.authStateChanges().listen((user) {
-      if (user == null) {
-        print('User is currently signed out!');
-      } else {
-        print('User is signed in!');
-        print("User's Id is :- " + user.uid);
-      }
-    });
+
+    // user = FirebaseAuth.instance.authStateChanges().listen((user) {
+    //   if (user == null) {
+    //     print('User is currently signed out!');
+    //   } else {
+    //     print('User is signed in!');
+    //     print("User's Id is :- " + user.uid);
+    //   }
+    // });
   }
 
   @override

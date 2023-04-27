@@ -1,11 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
+import 'dart:async';
+// import 'dart:html';
+
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:honey_bee_learning_station/config/palette.dart';
 import 'package:honey_bee_learning_station/pages/signup/verify.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/authentication_provider.dart';
 
 class signupPage extends StatefulWidget {
   const signupPage({super.key});
@@ -15,6 +21,10 @@ class signupPage extends StatefulWidget {
 }
 
 class _signupPageState extends State<signupPage> {
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+  final passControllerRecheck = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +69,7 @@ class _signupPageState extends State<signupPage> {
                   Padding(
                     padding: EdgeInsets.only(top: 63, left: 51, right: 51),
                     child: TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Enter your email or phone number',
@@ -73,6 +84,7 @@ class _signupPageState extends State<signupPage> {
                         padding:
                             EdgeInsets.only(top: 15, left: 51.5, right: 51.5),
                         child: TextField(
+                          controller: passController,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
@@ -99,6 +111,7 @@ class _signupPageState extends State<signupPage> {
                     padding:
                         EdgeInsets.symmetric(vertical: 15, horizontal: 51.5),
                     child: TextField(
+                      controller: passControllerRecheck,
                       obscureText: true,
                       enableSuggestions: false,
                       autocorrect: false,
@@ -113,13 +126,26 @@ class _signupPageState extends State<signupPage> {
                     padding: const EdgeInsets.only(left: 134, top: 30),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: verifier(),
-                          ),
-                        );
+                        if (passController.text != passControllerRecheck.text) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('Password dont match'),
+                          ));
+                        } else {
+                          Provider.of<AuthenticationProvider>(context,
+                                  listen: false)
+                              .SignUp(emailController.text, passController.text)
+                              .whenComplete(() {
+                            print('User Created Successfully');
+                          });
+                        }
+
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   PageTransition(
+                        //     type: PageTransitionType.rightToLeft,
+                        //     child: verifier(),
+                        //   ),
+                        // );
                       },
                       child: Text(
                         "Verify",
